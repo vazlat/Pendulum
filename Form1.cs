@@ -16,5 +16,50 @@ namespace Pendulum
         {
             InitializeComponent();
         }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBoxFlipPoints_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBoxFlipSplain_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBoxFlipLines_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBoxStabilizationPoints_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBoxStabilizationSplain_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBoxStabilizationLines_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxFlipZerPoint_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxStabilizationZerPoint_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
