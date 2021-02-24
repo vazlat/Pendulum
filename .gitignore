@@ -1,0 +1,13 @@
+*.sln
+*.v11
+*.unityproj
+*.pidb
+*.csproj
+/Library/
+/obj/
+/Temp/
+*.suo
+/.vs/
+/.idea/
+*.sln.DotSettings.user
+*.pdf
