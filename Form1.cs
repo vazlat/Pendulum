@@ -39,8 +39,38 @@ namespace Pendulum
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            RulesFlip rulesFlip = new RulesFlip();
+            Start(rulesFlip, rTxtFlip);
+            m_graphFlip.SetPoints(CoordYToPointF(rulesFlip.GetCoordY()));
+
+            RulesStabilization rulesStabilization = new RulesStabilization(rulesFlip.GetAngle(), rulesFlip.GetAngleIncrease());
+            Start(rulesStabilization, rTxtStabilization);
+            m_graphStabilization.SetPoints(CoordYToPointF(rulesStabilization.GetCoordY()));
+
             m_graphFlip.Draw();
             m_graphStabilization.Draw();
+        }
+
+        private void Start(RulesBase rulesBase, RichTextBox rTxtOutput)
+        {
+            rulesBase.Start();
+            foreach (double y in rulesBase.GetCoordY())
+            {
+                rTxtOutput.Text += "y = " + y + ";| ";
+            }
+            rTxtTest.Text += rulesBase.GetOutTest();
+        }
+
+        private List<PointF> CoordYToPointF(List<double> coordsY)
+        {
+            List<PointF> points = new List<PointF>();
+
+            for (int i = 0; i < coordsY.Count; ++i)
+            {
+                points.Add(new PointF(i, (float)coordsY[i]));
+            }
+
+            return points;
         }
 
         private void comboBoxFlipZerPoint_SelectedIndexChanged(object sender, EventArgs e)
