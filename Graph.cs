@@ -224,9 +224,9 @@ namespace Pendulum
             PointF[] points = m_points.ToArray();
             points = points.Select(x => new PointF(x.X / StepX * StepXSize, x.Y / StepY * StepYSize)).ToArray();
 
-
+            if (m_isPoints) DrawPoints(points);
             if (m_isConnectingLines) DrawConnectingLines(points);
-            DrawPoints(points);
+            if (m_isConnectingSpline) DrawConnectingSpline(points);
         }
 
         private void DrawPoints(PointF[] points)
@@ -244,6 +244,12 @@ namespace Pendulum
             Pen pen = new Pen(Color.Gray);
             pen.Width = 2;
             m_graphics.DrawLines(pen, points);
+        }
+
+        private void DrawConnectingSpline(PointF[] points)
+        {
+            Pen pen = new Pen(Color.Gray);
+            pen.Width = 2;
             m_graphics.DrawCurve(pen, points);
         }
         #endregion График (Точки, соединительные линии)
