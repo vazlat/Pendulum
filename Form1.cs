@@ -23,8 +23,8 @@ namespace Pendulum
             m_graphFlip.GraphicsCenter = new Point(panelFlip.Width / 2, panelFlip.Height / 2);
             m_graphFlip.ZeroPointPosition = ZeroPointPosition.left;
             m_graphFlip.StepXSize = 60;
-            m_graphFlip.StepY = 10;
-            m_graphFlip.StepYSize = 10;
+            m_graphFlip.StepY = 15;
+            m_graphFlip.StepYSize = 15;
 
             m_graphStabilization = new Graph(panelStabilization.CreateGraphics());
             m_graphStabilization.GraphicsCenter = new Point(panelStabilization.Width / 2, panelStabilization.Height / 2);
