@@ -58,6 +58,8 @@ namespace Pendulum
             {
                 rTxtOutput.Text += "y = " + y + ";| ";
             }
+
+            rTxtTest.Clear();
             rTxtTest.Text += rulesBase.GetOutTest();
         }
 

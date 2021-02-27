@@ -197,22 +197,22 @@ namespace Pendulum
 
             for (int i = 1; i < (m_positiveXLen / m_stepXSize); ++i)
             {
-                m_graphics.DrawString((i * m_stepX).ToString(), font, brush, i * m_stepXSize, 0);
+                m_graphics.DrawString((i * m_stepX).ToString(), font, brush, -4 + (i * m_stepXSize), 4);
             }
 
             for (int i = 1; i < (m_negativeXLen / m_stepXSize); ++i)
             {
-                m_graphics.DrawString((-i * m_stepX).ToString(), font, brush, -i * m_stepXSize, 0);
+                m_graphics.DrawString((-i * m_stepX).ToString(), font, brush, -4 + (-i * m_stepXSize), 4);
             }
 
             for (int i = 1; i < (m_positiveYLen / m_stepYSize); ++i)
             {
-                m_graphics.DrawString((i * m_stepY).ToString(), font, brush, -30, -i * m_stepYSize);
+                m_graphics.DrawString((i * m_stepY).ToString(), font, brush, -29, -6 + (-i * m_stepYSize));
             }
 
             for (int i = 1; i < (m_negativeYLen / m_stepYSize); ++i)
             {
-                m_graphics.DrawString((-i * m_stepY).ToString(), font, brush, -30, i * m_stepYSize);
+                m_graphics.DrawString((-i * m_stepY).ToString(), font, brush, -29, -6 + (i * m_stepYSize));
             }
             m_graphics.ScaleTransform(1, -1);
         }
