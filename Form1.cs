@@ -39,6 +39,10 @@ namespace Pendulum
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            rTxtTest.Clear();
+            rTxtFlip.Clear();
+            rTxtStabilization.Clear();
+
             RulesFlip rulesFlip = new RulesFlip();
             Start(rulesFlip, rTxtFlip);
             m_graphFlip.SetPoints(CoordYToPointF(rulesFlip.GetCoordY()));
@@ -53,13 +57,12 @@ namespace Pendulum
 
         private void Start(RulesBase rulesBase, RichTextBox rTxtOutput)
         {
-            rulesBase.Start();
+            rulesBase.Start();       
             foreach (double y in rulesBase.GetCoordY())
             {
                 rTxtOutput.Text += "y = " + y + ";| ";
             }
 
-            rTxtTest.Clear();
             rTxtTest.Text += rulesBase.GetOutTest();
         }
 
