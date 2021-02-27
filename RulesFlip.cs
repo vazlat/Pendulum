@@ -49,7 +49,7 @@ namespace Pendulum
         }
 
         int m_angleStep = 1;
-        double m_localAddAngle = 0; //telezhka
+        double m_localAddAngle = 0;
 
         public override void Start()
         {

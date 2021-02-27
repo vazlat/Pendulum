@@ -25,6 +25,7 @@ namespace Pendulum
         protected Rule[] m_rulesAngleControls;
         protected Object[,] m_rulesMatrix;
 
+        #region Get/Set
         protected List<double> m_coordY = new List<double>();
         public List<double> GetCoordY()
         {
@@ -48,6 +49,7 @@ namespace Pendulum
         {
             return m_angleIncrease;
         }
+        #endregion
 
         abstract public void Start();
 

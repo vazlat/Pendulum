@@ -35,7 +35,7 @@ namespace Pendulum
         float m_positiveYLen = 0;
         float m_negativeXLen = 0;
         float m_negativeYLen = 0;
-        float m_margin = 20;
+        float m_margin = 30;
         #endregion Privat variables
 
         #region Properties get/set
@@ -96,50 +96,50 @@ namespace Pendulum
                 case ZeroPointPosition.center:
                     offsetX = GraphicsCenter.X;
                     offsetY = GraphicsCenter.Y;
-                    m_positiveXLen = m_negativeXLen = GraphicsCenter.X;
-                    m_positiveYLen = m_negativeYLen = GraphicsCenter.Y;
+                    m_positiveXLen = m_negativeXLen = GraphicsCenter.X - m_margin;
+                    m_positiveYLen = m_negativeYLen = GraphicsCenter.Y - m_margin;
                     break;
                 case ZeroPointPosition.left:
                     offsetY = GraphicsCenter.Y;
-                    m_positiveXLen = -m_margin + GraphicsCenter.X * 2;
-                    m_positiveYLen = m_negativeYLen = GraphicsCenter.Y;
+                    m_positiveXLen = (-m_margin + GraphicsCenter.X) * 2;
+                    m_positiveYLen = m_negativeYLen = GraphicsCenter.Y - m_margin;
                     break;
                 case ZeroPointPosition.leftBottom:
                     offsetY = -m_margin + GraphicsCenter.Y * 2;
-                    m_positiveXLen = -m_margin + GraphicsCenter.X * 2;
-                    m_positiveYLen = -m_margin + GraphicsCenter.Y * 2;
+                    m_positiveXLen = (-m_margin + GraphicsCenter.X) * 2;
+                    m_positiveYLen = (-m_margin + GraphicsCenter.Y) * 2;
                     break;
                 case ZeroPointPosition.leftTop:
-                    m_positiveXLen = -m_margin + GraphicsCenter.X * 2;
-                    m_negativeYLen = -m_margin + GraphicsCenter.Y * 2;
+                    m_positiveXLen = (-m_margin + GraphicsCenter.X) * 2;
+                    m_negativeYLen = (-m_margin + GraphicsCenter.Y) * 2;
                     break;
                 case ZeroPointPosition.right:
                     offsetX = -m_margin + GraphicsCenter.X * 2;
                     offsetY = GraphicsCenter.Y;
-                    m_negativeXLen = -m_margin + GraphicsCenter.X * 2;
-                    m_positiveYLen = m_negativeYLen = GraphicsCenter.Y;
+                    m_negativeXLen = (-m_margin + GraphicsCenter.X) * 2;
+                    m_positiveYLen = m_negativeYLen = GraphicsCenter.Y - m_margin;
                     break;
                 case ZeroPointPosition.rightBottom:
                     offsetX = -m_margin + GraphicsCenter.X * 2;
                     offsetY = -m_margin + GraphicsCenter.Y * 2;
-                    m_negativeXLen = -m_margin + GraphicsCenter.X * 2;
-                    m_positiveYLen = -m_margin + GraphicsCenter.Y * 2;
+                    m_negativeXLen = (-m_margin + GraphicsCenter.X) * 2;
+                    m_positiveYLen = (-m_margin + GraphicsCenter.Y) * 2;
                     break;
                 case ZeroPointPosition.rightTop:
                     offsetX = -m_margin + GraphicsCenter.X * 2;
-                    m_negativeXLen = -m_margin + GraphicsCenter.X * 2;
-                    m_negativeYLen = -m_margin + GraphicsCenter.Y * 2;
+                    m_negativeXLen = (-m_margin + GraphicsCenter.X) * 2;
+                    m_negativeYLen = (-m_margin + GraphicsCenter.Y) * 2;
                     break;
                 case ZeroPointPosition.top:
                     offsetX = GraphicsCenter.X;
-                    m_positiveXLen = m_negativeXLen = GraphicsCenter.X;
-                    m_negativeYLen = GraphicsCenter.Y * 2;
+                    m_positiveXLen = m_negativeXLen = GraphicsCenter.X - m_margin;
+                    m_negativeYLen = (-m_margin + GraphicsCenter.Y) * 2;
                     break;
                 case ZeroPointPosition.bottom:
                     offsetX = GraphicsCenter.X;
                     offsetY = -m_margin + GraphicsCenter.Y * 2;
-                    m_positiveXLen = m_negativeXLen = GraphicsCenter.X;
-                    m_positiveYLen = -m_margin + GraphicsCenter.Y * 2;
+                    m_positiveXLen = m_negativeXLen = GraphicsCenter.X - m_margin;
+                    m_positiveYLen = (-m_margin + GraphicsCenter.Y) * 2;
                     break;
             }
 
@@ -167,22 +167,22 @@ namespace Pendulum
             Pen pen = new Pen(Color.Black);
             float segmentHalfHeigth = 2;
 
-            for (int i = 0; i < (m_positiveXLen - m_margin) / m_stepX * m_stepXSize; ++i)
+            for (int i = 0; i < (m_positiveXLen / m_stepXSize); ++i)
             {
                 m_graphics.DrawLine(pen, i * m_stepXSize, segmentHalfHeigth, i * m_stepXSize, -segmentHalfHeigth);
             }
 
-            for (int i = 0; i < (m_negativeXLen - m_margin) / m_stepX * m_stepXSize; ++i)
+            for (int i = 0; i < (m_negativeXLen / m_stepXSize); ++i)
             {
                 m_graphics.DrawLine(pen, -i * m_stepXSize, segmentHalfHeigth, -i * m_stepXSize, -segmentHalfHeigth);
             }
 
-            for (int i = 0; i < (m_positiveYLen - m_margin) / m_stepY * m_stepYSize; ++i)
+            for (int i = 0; i < (m_positiveYLen / m_stepYSize); ++i)
             {
                 m_graphics.DrawLine(pen, segmentHalfHeigth, i * m_stepYSize, -segmentHalfHeigth, i * m_stepYSize);
             }
 
-            for (int i = 0; i < (m_negativeYLen - m_margin) / m_stepY * m_stepYSize; ++i)
+            for (int i = 0; i < (m_negativeYLen / m_stepYSize); ++i)
             {
                 m_graphics.DrawLine(pen, segmentHalfHeigth, -i * m_stepYSize, -segmentHalfHeigth, -i * m_stepYSize);
             }
@@ -195,24 +195,24 @@ namespace Pendulum
 
             SolidBrush brush = new SolidBrush(Color.Black);
 
-            for (int i = 1; i < (m_positiveXLen - m_margin) / m_stepX * m_stepXSize; ++i)
+            for (int i = 1; i < (m_positiveXLen / m_stepXSize); ++i)
             {
-                m_graphics.DrawString((i * m_stepX).ToString(), font, brush, i * m_stepXSize, 0);
+                m_graphics.DrawString((i * m_stepX).ToString(), font, brush, -4 + (i * m_stepXSize), 4);
             }
 
-            for (int i = 1; i < (m_negativeXLen - m_margin) / m_stepX * m_stepXSize; ++i)
+            for (int i = 1; i < (m_negativeXLen / m_stepXSize); ++i)
             {
-                m_graphics.DrawString((-i * m_stepX).ToString(), font, brush, -i * m_stepXSize, 0);
+                m_graphics.DrawString((-i * m_stepX).ToString(), font, brush, -4 + (-i * m_stepXSize), 4);
             }
 
-            for (int i = 1; i < (m_positiveYLen - m_margin) / m_stepY * m_stepYSize; ++i)
+            for (int i = 1; i < (m_positiveYLen / m_stepYSize); ++i)
             {
-                m_graphics.DrawString((i * m_stepY).ToString(), font, brush, -30, -i * m_stepYSize);
+                m_graphics.DrawString((i * m_stepY).ToString(), font, brush, -29, -6 + (-i * m_stepYSize));
             }
 
-            for (int i = 1; i < (m_negativeYLen - m_margin) / m_stepY * m_stepYSize; ++i)
+            for (int i = 1; i < (m_negativeYLen / m_stepYSize); ++i)
             {
-                m_graphics.DrawString((-i * m_stepY).ToString(), font, brush, -30, i * m_stepYSize);
+                m_graphics.DrawString((-i * m_stepY).ToString(), font, brush, -29, -6 + (i * m_stepYSize));
             }
             m_graphics.ScaleTransform(1, -1);
         }
@@ -224,9 +224,9 @@ namespace Pendulum
             PointF[] points = m_points.ToArray();
             points = points.Select(x => new PointF(x.X / StepX * StepXSize, x.Y / StepY * StepYSize)).ToArray();
 
-
+            if (m_isPoints) DrawPoints(points);
             if (m_isConnectingLines) DrawConnectingLines(points);
-            DrawPoints(points);
+            if (m_isConnectingSpline) DrawConnectingSpline(points);
         }
 
         private void DrawPoints(PointF[] points)
@@ -244,6 +244,12 @@ namespace Pendulum
             Pen pen = new Pen(Color.Gray);
             pen.Width = 2;
             m_graphics.DrawLines(pen, points);
+        }
+
+        private void DrawConnectingSpline(PointF[] points)
+        {
+            Pen pen = new Pen(Color.Gray);
+            pen.Width = 2;
             m_graphics.DrawCurve(pen, points);
         }
         #endregion График (Точки, соединительные линии)

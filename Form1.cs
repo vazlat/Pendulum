@@ -23,8 +23,8 @@ namespace Pendulum
             m_graphFlip.GraphicsCenter = new Point(panelFlip.Width / 2, panelFlip.Height / 2);
             m_graphFlip.ZeroPointPosition = ZeroPointPosition.left;
             m_graphFlip.StepXSize = 60;
-            m_graphFlip.StepY = 10;
-            m_graphFlip.StepYSize = 10;
+            m_graphFlip.StepY = 15;
+            m_graphFlip.StepYSize = 15;
 
             m_graphStabilization = new Graph(panelStabilization.CreateGraphics());
             m_graphStabilization.GraphicsCenter = new Point(panelStabilization.Width / 2, panelStabilization.Height / 2);
@@ -39,6 +39,10 @@ namespace Pendulum
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            rTxtTest.Clear();
+            rTxtFlip.Clear();
+            rTxtStabilization.Clear();
+
             RulesFlip rulesFlip = new RulesFlip();
             Start(rulesFlip, rTxtFlip);
             m_graphFlip.SetPoints(CoordYToPointF(rulesFlip.GetCoordY()));
@@ -53,11 +57,12 @@ namespace Pendulum
 
         private void Start(RulesBase rulesBase, RichTextBox rTxtOutput)
         {
-            rulesBase.Start();
+            rulesBase.Start();       
             foreach (double y in rulesBase.GetCoordY())
             {
                 rTxtOutput.Text += "y = " + y + ";| ";
             }
+
             rTxtTest.Text += rulesBase.GetOutTest();
         }
 
